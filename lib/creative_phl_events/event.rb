@@ -4,7 +4,8 @@ class CreativePhlEvents::Event
 
 	@@all = []
 
-	def initialize
+	def initialize(event_hash)
+		event_hash.each {|k,v| self.send("#{k}=", v)}
 		save
 	end
 
@@ -13,6 +14,9 @@ class CreativePhlEvents::Event
 	end
 
 	def self.create_from_arr_of_hashes(arr)
+		arr.each do |event_hash|
+			new_event = self.new(event_hash)
+		end
 		binding.pry
 	end
 
