@@ -8,3 +8,4 @@ require "HTTParty"
 
 require_relative 'creative_phl_events/cli'
 require_relative 'creative_phl_events/scraper'
+require_relative 'creative_phl_events/event'
