@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby 
+
+require "bundler/setup"
+require "creative_phl_events"
+
+CreativePhlEvents::CLI.new.start
