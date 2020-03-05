@@ -22,10 +22,8 @@ class CreativePhlEvents::Scraper
 				:venue => event['venue']['venue'],
 				:tags => event['tags'].collect {|tag| tag['name']}
 			}
-			# binding.pry
 		end
-		binding.pry
-
+		CreativePhlEvents::Event.create_from_arr_of_hashes(events_array)
 	end
 
 
