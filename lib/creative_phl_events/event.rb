@@ -20,7 +20,10 @@ class CreativePhlEvents::Event
 	end
 
 	def self.list_titles
-		self.all.each.with_index(1) {|event, index| puts "#{index} - #{Nokogiri::HTML.parse(event.title)}"}
+		self.all.each.with_index(1) do |event, index|
+		# {|event, index| puts "#{index} - #{event.title}"}
+			binding.pry
+		end
 	end
 
 	def self.all
