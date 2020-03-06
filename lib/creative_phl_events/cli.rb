@@ -38,7 +38,12 @@ class CreativePhlEvents::CLI
 	end
 
 	def show_event_details
-		puts "SHow Event Details Method"
+		puts ""
+		puts "Please enter # of event you're interested in : "
+		puts ""
+		input = gets.strip.downcase
+		index = input.to_i - 1
+		CreativePhlEvents::Event.show_event_details(index)
 	end
 
 	def command_list
