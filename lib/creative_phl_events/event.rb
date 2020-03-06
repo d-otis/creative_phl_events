@@ -20,10 +20,7 @@ class CreativePhlEvents::Event
 	end
 
 	def self.list_titles
-		self.all.each.with_index(1) do |event, index|
-		# {|event, index| puts "#{index} - #{event.title}"}
-			binding.pry
-		end
+		self.all.each.with_index(1) {|event, index| puts "#{index} - #{HTMLEntities.new.decode(event.title)}"}
 	end
 
 	def self.all

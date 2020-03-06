@@ -5,7 +5,7 @@ require "pry"
 require "open-uri"
 require "json"
 require "HTTParty"
-require "htmlascii"
+require "htmlentities"
 
 require_relative 'creative_phl_events/cli'
 require_relative 'creative_phl_events/scraper'
