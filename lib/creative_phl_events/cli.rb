@@ -17,6 +17,8 @@ class CreativePhlEvents::CLI
 			when "titles"
 				list_titles
 				event_details
+			when "tags"
+				list_tags
 			when 'help'
 				command_list
 			end
@@ -46,10 +48,15 @@ class CreativePhlEvents::CLI
 		CreativePhlEvents::Event.show_event_details(index)
 	end
 
+	def list_tags
+		CreativePhlEvents::Tag.list_tags
+	end
+
 	def command_list
 		puts ""
 		puts "-- Command List --"
 		puts "titles - list event titles"
+		puts "tags - list event tags"
 		puts "help - list commands"
 		puts "exit - quit program"
 		puts ""

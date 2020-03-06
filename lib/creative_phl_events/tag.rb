@@ -20,6 +20,14 @@ class CreativePhlEvents::Tag
 		end
 	end
 
+	def self.list_tags
+		puts ""
+		puts "List of Tags"
+		puts "==============================="
+		self.all.each.with_index(1) {|tag, index| puts "#{index}. #{tag.name}"}
+		puts ""
+	end
+
 	def save
 		@@all << self
 	end
