@@ -16,6 +16,7 @@ class CreativePhlEvents::CLI
 			case input
 			when "titles"
 				list_titles
+				event_details
 			when 'help'
 				command_list
 			end
@@ -27,6 +28,17 @@ class CreativePhlEvents::CLI
 
 	def list_titles
 		CreativePhlEvents::Event.list_titles
+	end
+
+	def event_details
+		puts "Do you want details?"
+		puts ""
+		input = gets.strip.downcase
+		['y', 'yes'].include?(input) ? show_event_details : call
+	end
+
+	def show_event_details
+		puts "SHow Event Details Method"
 	end
 
 	def command_list
