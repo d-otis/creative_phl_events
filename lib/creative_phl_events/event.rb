@@ -6,12 +6,17 @@ class CreativePhlEvents::Event
 
 	def initialize(event_hash)
 		event_hash.each {|k,v| self.send("#{k}=", v)}
-		decode_date_entities
+		decode_title_entities
+		parse_description
 		save
 	end
 
-	def decode_date_entities
+	def decode_title_entities
 		@title = HTMLEntities.new.decode(self.title)
+	end
+
+	def parse_description
+		@description = Nokogiri::HTML(self.description).text
 	end
 
 	def save
@@ -33,13 +38,18 @@ class CreativePhlEvents::Event
 
 	def self.show_event_details(index)
 		event = self.all[index]
-		binding.pry
 		puts ""
+		puts "============================================="
 		puts event.title.upcase
+		puts ""
 		puts event.date
+		puts ""
 		puts event.description
-		puts event.venue
-		puts "Tags: #{event.tags.join(", ")}" 
+		puts ""
+		puts "Venue: #{event.venue}"
+		puts "Tags: #{event.tags.join(", ")}"
+		puts "============================================="
+		puts ""
 	end
 
 	def self.all
