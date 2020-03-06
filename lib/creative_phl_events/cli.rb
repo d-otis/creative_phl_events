@@ -50,6 +50,8 @@ class CreativePhlEvents::CLI
 		puts ""
 		puts "-- Command List --"
 		puts "titles - list event titles"
+		puts "help - list commands"
+		puts "exit - quit program"
 		puts ""
 	end
 
