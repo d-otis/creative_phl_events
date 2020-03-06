@@ -11,8 +11,6 @@ class CreativePhlEvents::Scraper
 		# venue = event['venue']['venue']
 
 		# doc = Nokogiri::HTML(open('https://creativephl.org/wp-json/tribe/events/v1/events'))
-		puts "Scraping Begins"
-		puts "Please wait for scraping to complete..."
 		doc = HTTParty.get('https://creativephl.org/wp-json/tribe/events/v1/events')
 		events_array = doc['events'].collect do |event|
 			event_hash = {
@@ -25,9 +23,7 @@ class CreativePhlEvents::Scraper
 				:tags => event['tags'].collect {|tag| tag['name']}
 			}
 		end
-		puts "Scraping Complete"
 		CreativePhlEvents::Event.create_from_arr_of_hashes(events_array)
-		puts "#{CreativePhlEvents::Event.all.size} events created."
 	end
 
 

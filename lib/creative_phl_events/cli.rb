@@ -7,7 +7,10 @@ class CreativePhlEvents::CLI
 	
 
 	def call
+		welcome
 		command_list
+		puts "Please enter a command:"
+		puts ""
 		input = gets.strip.downcase
 		while input != "exit"
 			case input
@@ -17,6 +20,7 @@ class CreativePhlEvents::CLI
 				command_list
 			end
 			puts "Please enter another command, type 'help,' or 'exit' "
+			puts ""
 			input = gets.strip.downcase
 		end
 	end
@@ -26,7 +30,16 @@ class CreativePhlEvents::CLI
 	end
 
 	def command_list
+		puts ""
+		puts "-- Command List --"
 		puts "titles - list event titles"
+		puts ""
+	end
+
+	def welcome
+		puts ""
+		puts "WELCOME TO CREATIVE PHL EVENTS CLI"
+		puts "=================================="
 	end
 
 end
