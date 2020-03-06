@@ -8,7 +8,7 @@ class CreativePhlEvents::Tag
 		@events = []
 	end
 
-	def find_or_create_by_tag(tag, event)
+	def self.find_or_create_by_tag(tag, event)
 		if self.all.find {|tag_instance| tag_instance.name == tag}
 			self.all.find {|tag_instance| tag_instance.name == tag}.events << event
 			self.all.find {|tag_instance| tag_instance.name == tag}
@@ -21,7 +21,7 @@ class CreativePhlEvents::Tag
 	end
 
 	def save
-		self.all << self
+		@@all << self
 	end
 
 	def self.all

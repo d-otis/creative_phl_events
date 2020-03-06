@@ -5,7 +5,14 @@ class CreativePhlEvents::Event
 	@@all = []
 
 	def initialize(event_hash)
-		event_hash.each {|k,v| self.send("#{k}=", v)}
+		# event_hash.each {|k,v| self.send("#{k}=", v)}
+		event_hash.each do |k, v|
+			if k == :tags
+				v.each {|tag| CreativePhlEvents::Tag.find_or_create_by_tag(tag, self)}
+			else
+				event_hash.each {|k,v| self.send("#{k}=", v)}
+			end
+		end
 		decode_title_entities
 		parse_description
 		save
