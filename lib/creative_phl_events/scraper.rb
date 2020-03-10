@@ -13,16 +13,18 @@ class CreativePhlEvents::Scraper
 		# doc = Nokogiri::HTML(open('https://creativephl.org/wp-json/tribe/events/v1/events'))
 		doc = HTTParty.get('https://creativephl.org/wp-json/tribe/events/v1/events')
 		events_array = doc['events'].collect do |event|
+			# binding.pry
 			event_hash = {
 				:title => event['title'],
 				:description => event['description'],
 				:date => event['date'],
 				:cost => event['cost'],
 				:url => event['url'],
-				:venue => event['venue']['venue'],
+				:venue => (event['venue']['venue'] if !event['venue'].empty?),
 				:tags => event['tags'].collect {|tag| tag['name']}
 			}
 		end
+		# binding.pry
 		CreativePhlEvents::Event.create_from_arr_of_hashes(events_array)
 	end
 

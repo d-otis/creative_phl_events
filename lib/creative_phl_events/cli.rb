@@ -19,6 +19,7 @@ class CreativePhlEvents::CLI
 				event_details
 			when "tags"
 				list_tags
+				# tag_details
 			when 'help'
 				command_list
 			end

@@ -28,6 +28,8 @@ class CreativePhlEvents::Tag
 		puts ""
 	end
 
+	
+
 	def save
 		@@all << self
 	end
