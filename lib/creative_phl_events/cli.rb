@@ -17,7 +17,6 @@ class CreativePhlEvents::CLI
 			when "titles"
 				list_titles
 				show_event_details
-				add_note
 			when "tags"
 				list_tags
 				tag_details
@@ -30,16 +29,25 @@ class CreativePhlEvents::CLI
 		end
 	end
 
-	def add_note
+	def add_note_prompt(event)
 		puts ""
 		puts "Would you like to add a note?"
 		puts ""
 		input = gets.strip.downcase
 		if ['yes', 'y'].include?(input)
-			puts "u selected yes"
+			add_note(event)
 		else
-			puts "u chose not to add a note"
+			# call
 		end
+		puts ""
+	end
+
+	def add_note(event)
+		puts ""
+		puts "Add note "
+		# list_titles
+		event.notes << gets.strip
+
 	end
 
 	def tag_details
@@ -75,6 +83,7 @@ class CreativePhlEvents::CLI
 		index = input.to_i - 1
 		# CreativePhlEvents::Event.show_event_details(index)
 		CreativePhlEvents::Event.show_event_details(CreativePhlEvents::Event.select_event(index))
+		add_note_prompt(CreativePhlEvents::Event.select_event(index))
 	end
 
 	def list_tags

@@ -1,6 +1,6 @@
 class CreativePhlEvents::Event
 
-	attr_accessor :title, :description, :url, :tags, :venue, :cost, :date
+	attr_accessor :title, :description, :url, :tags, :venue, :cost, :date, :notes
 
 	@@all = []
 
@@ -15,6 +15,7 @@ class CreativePhlEvents::Event
 		end
 		decode_title_entities
 		parse_description
+		@notes = []
 		save
 	end
 
@@ -59,6 +60,8 @@ class CreativePhlEvents::Event
 		puts ""
 		puts "Venue: #{event.venue}" if event.venue
 		puts "Tags: #{event.tags.join(", ")}"
+		puts "" if !event.notes.empty?
+		puts "Notes: #{event.notes.join(" | ")}" if !event.notes.empty?
 		puts "============================================="
 		puts ""
 	end
