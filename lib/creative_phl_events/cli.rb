@@ -60,7 +60,8 @@ class CreativePhlEvents::CLI
 		puts ""
 		input = gets.strip.downcase
 		index = input.to_i - 1
-		CreativePhlEvents::Event.show_event_details(index)
+		# CreativePhlEvents::Event.show_event_details(index)
+		CreativePhlEvents::Event.show_event_details(CreativePhlEvents::Event.select_event(index))
 	end
 
 	def list_tags

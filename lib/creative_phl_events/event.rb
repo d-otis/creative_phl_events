@@ -43,8 +43,12 @@ class CreativePhlEvents::Event
 		puts ""
 	end
 
-	def self.show_event_details(index)
-		event = self.all[index]
+	def self.select_event(index)
+		self.all[index]
+	end
+
+	def self.show_event_details(event)
+		# event = self.all[index]
 		puts ""
 		puts "============================================="
 		puts event.title.upcase
@@ -60,7 +64,7 @@ class CreativePhlEvents::Event
 	end
 
 	def self.find_by_title(title)
-		found_event = CreativePhlEvents::Event.all.find {|event| event.title == title}
+		self.show_event_details(CreativePhlEvents::Event.all.find {|event| event.title == title})
 	end
 
 	def self.all
