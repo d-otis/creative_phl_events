@@ -13,10 +13,19 @@ class CreativePhlEvents::Event
 				event_hash.each {|k,v| self.send("#{k}=", v)}
 			end
 		end
-		decode_title_entities
-		parse_description
+		attr_sanitizing
 		@notes = []
 		save
+	end
+
+	def attr_sanitizing
+		decode_title_entities
+		parse_description
+		venue_handling
+	end
+
+	def venue_handling
+		self.venue = "No Venue Specified" if !self.venue
 	end
 
 	def decode_title_entities
@@ -42,7 +51,7 @@ class CreativePhlEvents::Event
 		puts "Venue List"
 		puts "==========================="
 		puts ""
-		self.all.each do |event|
+		self.all.each.with_index(1) do |event, index|
 			binding.pry
 		end
 	end
