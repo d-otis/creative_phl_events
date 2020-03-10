@@ -35,19 +35,11 @@ class CreativePhlEvents::CLI
 		puts ""
 		input = gets.strip.downcase
 		if ['yes', 'y'].include?(input)
-			add_note(event)
+			CreativePhlEvents::Event.add_note(event)
 		else
 			# call
 		end
 		puts ""
-	end
-
-	def add_note(event)
-		puts ""
-		puts "Add note "
-		# list_titles
-		event.notes << gets.strip
-
 	end
 
 	def tag_details

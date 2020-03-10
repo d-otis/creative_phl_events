@@ -70,6 +70,13 @@ class CreativePhlEvents::Event
 		self.show_event_details(CreativePhlEvents::Event.all.find {|event| event.title == title})
 	end
 
+	def self.add_note(event)
+		puts ""
+		puts "Add note "
+		# list_titles
+		event.notes << gets.strip
+	end
+
 	def self.all
 		@@all
 	end
