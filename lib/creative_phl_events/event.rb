@@ -50,10 +50,22 @@ class CreativePhlEvents::Event
 		puts ""
 		puts "Venue List"
 		puts "==========================="
+		unique_venue_arr = self.sorted_venues.collect {|event| event.venue}.uniq
+		unique_venue_arr.each.with_index(1) {|venue, index| puts "#{index}. #{venue}"}
 		puts ""
-		self.all.each.with_index(1) do |event, index|
-			binding.pry
-		end
+		puts "Please select a venue for a list of its events : "
+		puts ""
+		input = gets.strip.downcase.to_i
+		index = input - 1
+		self.find_by_venue(unique_venue_arr[index])
+	end
+
+	def self.sorted_venues
+		self.all.sort_by(&:venue)
+	end
+
+	def self.find_by_venue(venue)
+		self.show_event_details(self.all.find {|event| event.venue == venue})
 	end
 
 	def self.list_titles
