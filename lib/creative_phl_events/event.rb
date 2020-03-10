@@ -57,7 +57,7 @@ class CreativePhlEvents::Event
 		puts ""
 		puts event.description
 		puts ""
-		puts "Venue: #{event.venue}"
+		puts "Venue: #{event.venue}" if event.venue
 		puts "Tags: #{event.tags.join(", ")}"
 		puts "============================================="
 		puts ""
