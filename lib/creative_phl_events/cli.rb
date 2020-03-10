@@ -19,13 +19,27 @@ class CreativePhlEvents::CLI
 				event_details
 			when "tags"
 				list_tags
-				# tag_details
+				tag_details
 			when 'help'
 				command_list
 			end
 			puts "Please enter another command, type 'help,' or 'exit' "
 			puts ""
 			input = gets.strip.downcase
+		end
+	end
+
+	def tag_details
+		puts ""
+		puts "Select a tag number to see a list of events associated with it : "
+		puts ""
+		input = gets.strip.downcase.to_i
+		index = input - 1
+		if index >= 0
+			CreativePhlEvents::Tag.detail_by_tag_index(index)
+		else
+			puts "Please enter a number greater than zero and no greater than #{CreativePhlEvents::Tag.all.size}"
+			tag_details
 		end
 	end
 

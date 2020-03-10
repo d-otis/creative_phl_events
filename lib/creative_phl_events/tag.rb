@@ -22,13 +22,15 @@ class CreativePhlEvents::Tag
 
 	def self.list_tags
 		puts ""
-		puts "List of Tags"
+		puts "List of Tags in Alphabetical Order"
 		puts "==============================="
-		self.all.each.with_index(1) {|tag, index| puts "#{index}. #{tag.name}"}
+		self.all.sort_by(&:name).each.with_index(1) {|tag, index| puts "#{index}. #{tag.name}"}
 		puts ""
 	end
 
-	
+	def self.detail_by_tag_index(index)
+		puts "this is the detail by tag index method"
+	end
 
 	def save
 		@@all << self
