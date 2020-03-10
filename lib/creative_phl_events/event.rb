@@ -52,6 +52,15 @@ class CreativePhlEvents::Event
 		puts "==========================="
 		unique_venue_arr = self.sorted_venues.collect {|event| event.venue}.uniq
 		unique_venue_arr.each.with_index(1) {|venue, index| puts "#{index}. #{venue}"}
+
+		self.sorted_venues.collect do |event|
+			venue_hash = {
+				
+			}
+		end
+
+
+
 		puts ""
 		puts "Please select a venue for a list of its events : "
 		puts ""
