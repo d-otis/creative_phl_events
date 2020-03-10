@@ -61,7 +61,7 @@ class CreativePhlEvents::Event
 		puts "Venue: #{event.venue}" if event.venue
 		puts "Tags: #{event.tags.join(", ")}"
 		puts "" if !event.notes.empty?
-		puts "Notes: #{event.notes.join(" | ")}" if !event.notes.empty?
+		puts "Notes: #{event.notes.join(" // ")}" if !event.notes.empty?
 		puts "============================================="
 		puts ""
 	end
@@ -70,11 +70,11 @@ class CreativePhlEvents::Event
 		self.show_event_details(CreativePhlEvents::Event.all.find {|event| event.title == title})
 	end
 
-	def self.add_note(event)
+	def add_note
 		puts ""
 		puts "Add note "
 		# list_titles
-		event.notes << gets.strip
+		self.notes << gets.strip
 	end
 
 	def self.all

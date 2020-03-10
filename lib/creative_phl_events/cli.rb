@@ -35,7 +35,8 @@ class CreativePhlEvents::CLI
 		puts ""
 		input = gets.strip.downcase
 		if ['yes', 'y'].include?(input)
-			CreativePhlEvents::Event.add_note(event)
+			# CreativePhlEvents::Event.add_note(event)
+			event.add_note
 		else
 			# call
 		end
