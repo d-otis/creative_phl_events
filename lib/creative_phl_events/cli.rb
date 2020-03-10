@@ -16,7 +16,8 @@ class CreativePhlEvents::CLI
 			case input
 			when "titles"
 				list_titles
-				event_details
+				show_event_details
+				add_note
 			when "tags"
 				list_tags
 				tag_details
@@ -26,6 +27,18 @@ class CreativePhlEvents::CLI
 			puts "Please enter another command, type 'help,' or 'exit' "
 			puts ""
 			input = gets.strip.downcase
+		end
+	end
+
+	def add_note
+		puts ""
+		puts "Would you like to add a note?"
+		puts ""
+		input = gets.strip.downcase
+		if ['yes', 'y'].include?(input)
+			puts "u selected yes"
+		else
+			puts "u chose not to add a note"
 		end
 	end
 

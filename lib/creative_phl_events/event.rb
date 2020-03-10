@@ -39,7 +39,7 @@ class CreativePhlEvents::Event
 	def self.list_titles
 		puts ""
 		# self.all.each.with_index(1) {|event, index| puts "#{index} - #{HTMLEntities.new.decode(event.title)}"}
-		self.all.each.with_index(1) {|event, index| puts "#{index} - #{event.title}"}
+		self.all.each.with_index(1) {|event, index| puts "#{index} - #{event.title} - #{event.date.split(" ")[0]}"}
 		puts ""
 	end
 
