@@ -32,7 +32,7 @@ class CreativePhlEvents::CLI
 	end
 
 	def list_venues
-		puts "here's the list venues feature"
+		CreativePhlEvents::Event.list_venues
 	end
 
 	def add_note_prompt(event)
@@ -89,6 +89,7 @@ class CreativePhlEvents::CLI
 		puts "-- Command List --"
 		puts "titles - list event titles"
 		puts "tags - list event tags"
+		puts "venues - list event venues"
 		puts "help - list commands"
 		puts "exit - quit program"
 		puts ""

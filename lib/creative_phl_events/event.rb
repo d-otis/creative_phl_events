@@ -37,6 +37,16 @@ class CreativePhlEvents::Event
 		end
 	end
 
+	def self.list_venues
+		puts ""
+		puts "Venue List"
+		puts "==========================="
+		puts ""
+		self.all.each do |event|
+			binding.pry
+		end
+	end
+
 	def self.list_titles
 		puts ""
 		# self.all.each.with_index(1) {|event, index| puts "#{index} - #{HTMLEntities.new.decode(event.title)}"}
