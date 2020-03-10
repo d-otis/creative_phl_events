@@ -20,6 +20,8 @@ class CreativePhlEvents::CLI
 			when "tags"
 				list_tags
 				tag_details
+			when "venues"
+				list_venues
 			when 'help'
 				command_list
 			end
@@ -29,17 +31,16 @@ class CreativePhlEvents::CLI
 		end
 	end
 
+	def list_venues
+		puts "here's the list venues feature"
+	end
+
 	def add_note_prompt(event)
 		puts ""
 		puts "Would you like to add a note?"
 		puts ""
 		input = gets.strip.downcase
-		if ['yes', 'y'].include?(input)
-			# CreativePhlEvents::Event.add_note(event)
-			event.add_note
-		else
-			# call
-		end
+		event.add_note if ['yes', 'y'].include?(input)
 		puts ""
 	end
 
