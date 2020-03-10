@@ -59,6 +59,10 @@ class CreativePhlEvents::Event
 		puts ""
 	end
 
+	def self.find_by_title(title)
+		found_event = CreativePhlEvents::Event.all.find {|event| event.title == title}
+	end
+
 	def self.all
 		@@all
 	end
